@@ -9,14 +9,14 @@ const session = require("express-session");
 const validator = require("express-validator");
 const passport = require("passport");
 const flash = require("connect-flash");
-const MySQLStore = require("express-mysql-session")(session);
+/* const MySQLStore = require("express-mysql-session")(session); */
 
 const app = express();
 
 //config
 app.set("port", process.env.PORT || 4000);
 app.set("views", path.join(__dirname, "views"));
-app.engine(".hbs", exphbs, {
+app.engine(".hbs", exphbs(), {
   defaultLayout: "main",
   layoutsDir: path.join(app.get("views"), "layouts"),
   partialsDir: path.join(app.get("views"), "partials"),
