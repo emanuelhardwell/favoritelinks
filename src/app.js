@@ -9,7 +9,9 @@ const session = require("express-session");
 const validator = require("express-validator");
 const passport = require("passport");
 const flash = require("connect-flash");
-/* const MySQLStore = require("express-mysql-session")(session); */
+const MySQLStore = require("express-mysql-session");
+
+const { database } = require("./key");
 
 const app = express();
 
@@ -29,9 +31,19 @@ app.set("view engine", ".hbs");
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(
+  session({
+    secret: "hardwell",
+    resave: false,
+    saveUninitialized: false,
+    store: new MySQLStore(database),
+  })
+);
+app.use(flash());
 
 //global variables
 app.use((req, res, next) => {
+  app.locals.success = req.flash("success");
   next();
 });
 
