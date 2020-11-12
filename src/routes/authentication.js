@@ -18,7 +18,7 @@ router.post(
 );
 
 router.get("/profile", (req, res) => {
-  res.send("data save");
+  res.send("you profilr is this");
 });
 
 module.exports = router;
