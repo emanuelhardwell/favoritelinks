@@ -28,4 +28,10 @@ router.get("/", async (req, res) => {
   res.render("links/list", { links });
 });
 
+router.get("/delete/:id_link", async (req, res) => {
+  const id = req.params.id_link;
+  pool.query("delete from links where id_link = ?", [id]);
+  res.redirect("/link");
+});
+
 module.exports = router;
