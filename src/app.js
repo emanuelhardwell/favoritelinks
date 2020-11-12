@@ -9,11 +9,12 @@ const session = require("express-session");
 const validator = require("express-validator");
 const passport = require("passport");
 const flash = require("connect-flash");
-const MySQLStore = require("express-mysql-session");
+const MySQLStore = require("express-mysql-session")(session);
 
 const { database } = require("./key");
 
 const app = express();
+require("./libs/passport");
 
 //config
 app.set("port", process.env.PORT || 4000);
@@ -40,6 +41,8 @@ app.use(
   })
 );
 app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 
 //global variables
 app.use((req, res, next) => {
