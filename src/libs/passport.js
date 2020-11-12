@@ -36,8 +36,41 @@ passport.use(
   )
 );
 
+passport.use(
+  "local.signin",
+  new LocalStrategy(
+    {
+      usernameField: "username",
+      passwordField: "password",
+      passReqToCallback: true,
+    },
+    async (req, username, password, done) => {
+      /* console.log(req.body); */
+      const row = await pool.query("select * from users where username= ? ", [
+        username,
+      ]);
+
+      if (row.length > 0) {
+        const user = row[0];
+        const query = await helper.matchPassword(password, user.password);
+        if (query) {
+          done(
+            null,
+            user,
+            req.flash("success", "Welcome Sr. " + user.username)
+          );
+        } else {
+          done(null, false, req.flash("message", "Incorrect Password !!!"));
+        }
+      } else {
+        done(null, false, req.flash("message", "Username not found !!!"));
+      }
+    }
+  )
+);
+
 passport.serializeUser((user, done) => {
-  done(null, user.id);
+  done(null, user.id_user);
 });
 
 passport.deserializeUser(async (id, done) => {
