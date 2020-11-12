@@ -1,1 +1,21 @@
 {{!--  --}}
+{{!--  --}}
+<div class="container p-4">
+    <div class="row">
+        {{#each links}}
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body bg-dark">
+                    <a href="{{ url}}" target="_blank">
+                        <h4 class="card-title"> {{ title }}</h4>
+                    </a>
+                    <p>{{description}}</p>
+                    <p class="text-muted">{{ create_date}}</p>
+                    <a href="/link/delete/{{id_link}}" class="btn btn-danger">Delete</a>
+                    <a href="/link/edit/{{id_link}}" class="btn btn-warning">Update</a>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
