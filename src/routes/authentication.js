@@ -31,7 +31,12 @@ router.post(
 );
 
 router.get("/profile", (req, res) => {
-  res.send("you profilr is this");
+  res.render("profile");
+});
+
+router.get("/logout", (req, res) => {
+  req.logOut();
+  res.redirect("/signin");
 });
 
 module.exports = router;
