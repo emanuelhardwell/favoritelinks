@@ -19,6 +19,7 @@ router.post("/add", async (req, res) => {
     title,
     url,
     description,
+    user_id: req.user.id_user,
   };
   await pool.query("insert into links set ?", [newLink]);
   req.flash("success", "Link added successfully"); /* notification */
@@ -27,7 +28,9 @@ router.post("/add", async (req, res) => {
 
 /* listar mis link */
 router.get("/", isLoggedIn, async (req, res) => {
-  const links = await pool.query("select * from links");
+  const links = await pool.query("select * from links where user_id = ?", [
+    req.user.id_user,
+  ]);
   res.render("links/list", { links });
 });
 

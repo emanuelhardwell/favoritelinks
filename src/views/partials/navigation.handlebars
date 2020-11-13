@@ -1,7 +1,7 @@
 {{!--  --}}
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
-        <a class="navbar-brand" href="/link">Favorite Links</a>
+        <a class="navbar-brand" href="/">Favorite Links</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -21,6 +21,9 @@
                 </li>
                 <li class="nav-item"><a class="nav-link" href="/profile">Profile</a></li>
                 <li class="nav-item"><a class="nav-link" href="/logout">LogOut</a></li>
+                {{else}}
+                <li class="nav-item"><a class="nav-link" href="/signin">SignIn</a></li>
+                <li class="nav-item"><a class="nav-link" href="/signup">SignUp</a></li>
                 {{/if}}
             </ul>
         </div>
