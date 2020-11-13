@@ -3,10 +3,12 @@
 const express = require("express");
 const router = express.Router();
 
+const { isLoggedIn } = require("../libs/auth");
+
 //requiero mi objeto que contiene la conexión a mi DB
 const pool = require("../db");
 
-router.get("/add", (req, res) => {
+router.get("/add", isLoggedIn, (req, res) => {
   res.render("links/add");
 });
 
@@ -24,7 +26,7 @@ router.post("/add", async (req, res) => {
 });
 
 /* listar mis link */
-router.get("/", async (req, res) => {
+router.get("/", isLoggedIn, async (req, res) => {
   const links = await pool.query("select * from links");
   res.render("links/list", { links });
 });
@@ -36,7 +38,7 @@ router.get("/delete/:id_link", async (req, res) => {
   res.redirect("/link");
 });
 
-router.get("/edit/:id_link", async (req, res) => {
+router.get("/edit/:id_link", isLoggedIn, async (req, res) => {
   const id = req.params.id_link;
   const links = await pool.query("select * from links where id_link = ?", [id]);
   console.log(links[0]);
