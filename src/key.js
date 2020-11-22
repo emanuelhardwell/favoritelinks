@@ -2,10 +2,10 @@
  */
 module.exports = {
   database: {
-    connectionLimit: 10,
+    /* connectionLimit: 10, */
     host: "localhost",
     database: "favorite_links",
-    user: "favorite",
-    password: "favorite100",
+    user: "root",
+    password: "oneplus8t",
   },
 };

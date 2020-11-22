@@ -10,7 +10,7 @@
                         <h4 class="card-title"> {{ title }}</h4>
                     </a>
                     <p>{{description}}</p>
-                    <p class="text-muted">{{ create_date}}</p>
+                    <p class="text-muted">{{timeago create_date}}</p>
                     <a href="/link/delete/{{id_link}}" class="btn btn-danger">Delete</a>
                     <a href="/link/edit/{{id_link}}" class="btn btn-warning">Update</a>
                 </div>
@@ -20,8 +20,8 @@
         <div class="col-md-4 mx-auto">
             <div class="card text-center">
                 <div class="card-body bg-dark">
-                    <h4>There are not links save yet !!!! </h4>
-                    <a class="bnt btn-success" href="/link/add"> Create a new link</a>
+                    <h4 class="mb-4">There are not links save yet !!!! </h4>
+                    <a class="" href="/link/add"> Create a new link</a>
                 </div>
             </div>
         </div>
