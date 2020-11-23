@@ -1,11 +1,12 @@
 /*
  */
+
 module.exports = {
   database: {
     /* connectionLimit: 10, */
-    host: "localhost",
-    database: "favorite_links",
-    user: "favorite",
-    password: "favorite100",
+    host: process.env.HOST,
+    database: process.env.DATABASE,
+    user: process.env.USERDB,
+    password: process.env.PASSWORD,
   },
 };
