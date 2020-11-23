@@ -14,13 +14,16 @@ router.get("/add", isLoggedIn, (req, res) => {
 
 router.post("/add", async (req, res) => {
   /* console.log(req.body); */
-  const { title, url, description } = req.body;
-  const newLink = {
+  const { title, url, description } = await req.body;
+  const newLink = await {
     title,
     url,
     description,
     user_id: req.user.id_user,
   };
+  console.log(req.user.id_user);
+  console.log(req.user.id);
+
   await pool.query("insert into links set ?", [newLink]);
   req.flash("success", "Link added successfully"); /* notification */
   res.redirect("/link");

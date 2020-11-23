@@ -5,7 +5,7 @@ module.exports = {
     /* connectionLimit: 10, */
     host: "localhost",
     database: "favorite_links",
-    user: "root",
-    password: "oneplus8t",
+    user: "favorite",
+    password: "favorite100",
   },
 };

@@ -70,13 +70,13 @@ passport.use(
   )
 );
 
-passport.serializeUser((user, done) => {
-  done(null, user);
+passport.serializeUser(async(user, done) => {
+  await done(null, user);
 });
 
 passport.deserializeUser(async (user, done) => {
   /* const row = await pool.query("select * from users where id_user = ?", [user.id]); */
   /* console.log(row); */
   /* done(null, row[0]); */
-  done(null, user);
+  await done(null, user);
 });
