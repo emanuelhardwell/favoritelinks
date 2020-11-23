@@ -9,6 +9,7 @@ const session = require("express-session");
 const passport = require("passport");
 const flash = require("connect-flash");
 const MySQLStore = require("express-mysql-session")(session);
+require("dotenv").config();
 
 const { database } = require("./key");
 
@@ -16,7 +17,7 @@ const app = express();
 require("./libs/passport");
 
 //config
-app.set("port", process.env.PORT || 4000);
+app.set("port", process.env.PORT || process.env.PORT_PRO);
 app.set("views", path.join(__dirname, "views"));
 app.engine(
   ".hbs",

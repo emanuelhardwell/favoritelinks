@@ -63,7 +63,7 @@ passport.use(
 
       const result = await pool.query("insert into users set ? ", newUser);
       /* console.log(result); */
-      newUser.id = result.insertId;
+      newUser.id_user = result.insertId;
       console.log(newUser.id);
       return done(null, newUser);
     }

@@ -14,8 +14,8 @@ router.get("/add", isLoggedIn, (req, res) => {
 
 router.post("/add", async (req, res) => {
   /* console.log(req.body); */
-  const { title, url, description } = await req.body;
-  const newLink = await {
+  const { title, url, description } = req.body;
+  const newLink ={
     title,
     url,
     description,
